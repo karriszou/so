@@ -7,13 +7,13 @@ echo --------------------------------------------------
 
 sudo tar -xf ${FILENAME}.tar.xz
 sudo mv ${FILENAME} so
-sudo cd so
+cd so
 
 sudo chmod +x xray
 
 # Add systemd service
 # sudo cp systemd/system/xray.service /etc/systemd/system
-sudo cp -r systemd/system/ /etc/systemd/system
+sudo cp -r systemd/system/ /etc/systemd/
 sudo systemctl daemon-reload
 sudo systemctl enable xray.service
 
