@@ -29,6 +29,9 @@ sudo systemctl restart sshd
 sudo systemctl start xray.service 
 sudo systemctl status xray.service 
 
+sudo ufw allow 2023
+netstat -tlpn
+
 # Enable google BBR
 # echo net.core.default_qdisc=fq >> /etc/sysctl.conf
 # echo net.ipv4.tcp_congestion_control=bbr>> /etc/sysctl.conf
