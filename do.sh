@@ -9,11 +9,13 @@ sudo tar -xf ${FILENAME}.tar.xz
 sudo mv ${FILENAME} so
 cd so
 
-sudo chmod +x xray
+sudo chmod 755 xray
+sudo chmod 644 geoip.dat geosite.dat
 
 # Add systemd service
 # sudo cp systemd/system/xray.service /etc/systemd/system
 sudo cp -r systemd/system/ /etc/systemd/
+sudo chmod 644 /etc/systemd/system/xray.service /etc/systemd/system/xray@.service
 sudo systemctl daemon-reload
 sudo systemctl enable xray.service
 
@@ -25,11 +27,11 @@ echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
 echo PasswordAuthentication no >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
-# Enable v2ray service
+# Enable xray service
 sudo systemctl start xray.service 
 sudo systemctl status xray.service 
 
-# Open port
+# Open port from firewall
 sudo ufw allow 2023
 netstat -tlpn | grep xray
 
@@ -38,7 +40,7 @@ netstat -tlpn | grep xray
 # echo net.ipv4.tcp_congestion_control=bbr>> /etc/sysctl.conf
 # sysctl -p
 
-# sudo systemctl status v2ray.service 
+# sudo systemctl status xray.service 
 sudo sysctl net.ipv4.tcp_congestion_control
 
 echo install successful!!
