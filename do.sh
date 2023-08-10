@@ -29,8 +29,9 @@ sudo systemctl restart sshd
 sudo systemctl start xray.service 
 sudo systemctl status xray.service 
 
+# Open port
 sudo ufw allow 2023
-netstat -tlpn
+netstat -tlpn | grep xray
 
 # Enable google BBR
 # echo net.core.default_qdisc=fq >> /etc/sysctl.conf
