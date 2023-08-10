@@ -20,9 +20,9 @@ sudo systemctl enable xray.service
 # Add ssh key
 cat ssh-key-001.pub >> ~/.ssh/authorized_keys
 
-# Enable PasswordAuthentication
+# Enable PubkeyAuthentication
 echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
-# echo PasswordAuthentication no >> /etc/ssh/sshd_config
+echo PasswordAuthentication no >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
 # Enable v2ray service
