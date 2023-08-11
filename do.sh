@@ -19,19 +19,12 @@ sudo chmod 644 /etc/systemd/system/xray.service /etc/systemd/system/xray@.servic
 sudo systemctl daemon-reload
 sudo systemctl enable xray.service
 
-# Add ssh key
-cat ssh-key-001.pub >> ~/.ssh/authorized_keys
-
-# Enable PubkeyAuthentication
-echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
-echo PasswordAuthentication no >> /etc/ssh/sshd_config
-sudo systemctl restart sshd
-
 # Enable xray service
 sudo systemctl start xray.service 
 sudo systemctl status xray.service 
 
 # Open port from firewall
+echo --------------------------------------------------
 sudo ufw allow 2023
 netstat -tlpn | grep xray
 
@@ -42,5 +35,14 @@ netstat -tlpn | grep xray
 
 # sudo systemctl status xray.service 
 sudo sysctl net.ipv4.tcp_congestion_control
+
+# Add ssh key
+cat ssh-key-001.pub >> ~/.ssh/authorized_keys
+
+# Enable PubkeyAuthentication
+echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
+echo PasswordAuthentication no >> /etc/ssh/sshd_config
+sudo systemctl restart sshd.service
+sudo systemctl restart ssh.service
 
 echo install successful!!
