@@ -42,7 +42,8 @@ cat ssh-key-001.pub >> ~/.ssh/authorized_keys
 # Enable PubkeyAuthentication
 echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
 echo PasswordAuthentication no >> /etc/ssh/sshd_config
-sudo systemctl restart sshd.service
-sudo systemctl restart ssh.service
+sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config && service ssh restart
+# sudo systemctl restart sshd.service
+# sudo systemctl restart ssh.service
 
 echo install successful!!
