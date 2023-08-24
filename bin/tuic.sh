@@ -602,7 +602,7 @@ cat <<EOF > /root/tuic/v2rayn.json
         "uuid": "$uuid",
         "password": "$password",
         "ip": "$ip",
-        "congestion_controll": "bbr",
+        "congestion_control": "bbr",
         "alpn": ["h3", "spdy/3.1"]
     },
     "local": {
