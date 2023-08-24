@@ -1,6 +1,5 @@
 #!bin/bash
 
-# filepath='https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-musl'
 filepath="https://github.com/karriszou/so/raw/master/bin/tuic-server-1.0.0-musl"
 
 red='\033[0;31m'
@@ -498,12 +497,6 @@ acme( ) {
     9 ) acme_uninstall;;
     * ) exit      
     esac
-
-    # if [[ ! -f /root/.acme.sh/acme.sh ]]; then
-    #     # wget -N https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh && bash acme.sh
-    #     wget -N https://get.acme.sh | sh; apt install socat -y || yum install socat -y;
-    # fi
-    # /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 }
 
 install_certificate( ) {
@@ -701,7 +694,5 @@ start_menu( ) {
 
 if [ $# == 0 ]; then
     start
-# lastvsion=v`curl -s https://data.jsdelivr.com/v1/package/gh/EAimTY/tuic | sed -n 4p | tr -d ',"' | awk '{print $1}'`
-# ygvsion=v`/root/tuic/tuic -v 2>/dev/null`
     start_menu
 fi
