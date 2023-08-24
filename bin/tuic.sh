@@ -130,7 +130,7 @@ package_update( ) {
     fi
         yum install epel-release -y
     else
-        apt update
+        apt update --allow-change-releaseinfo
     fi
 }
 
@@ -652,8 +652,8 @@ tuic_install( ) {
 start( ) {
     cd /root
     # ufw allow 9874
-    chmod +x /root/tuic.sh
-    ln -sf /root/tuic.sh /usr/bin/tu
+    # chmod +x /root/tuic.sh
+    # ln -sf /root/tuic.sh /usr/bin/tu
 }
 
 start_menu( ) {
