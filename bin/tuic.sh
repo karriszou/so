@@ -1,7 +1,7 @@
 #!bin/bash
 
 # filepath='https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0/tuic-server-1.0.0-x86_64-unknown-linux-musl'
-filepaht='https://github.com/karriszou/so/raw/master/bin/tuic-server-1.0.0-musl'
+filepath='https://github.com/karriszou/so/raw/master/bin/tuic-server-1.0.0-musl'
 
 red='\033[0;31m'
 yellow='\033[0;33m'
@@ -140,7 +140,7 @@ install_core( ) {
         blue "Installed TUIC core: $(/root/tuic/tuic -v)\n"
     else
         mkdir /root/tuic
-        wget -NO /root/tuic/tuic ${pathfile}
+        wget -NO /root/tuic/tuic ${filepath}
         if [[ -f '/root/tuic/tuic' ]]; then
             # chmod +x /root/tuic/tuic
             chmod 755 /root/tuic/tuic
