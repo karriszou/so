@@ -668,17 +668,18 @@ start( ) {
 start_menu( ) {
     tuic_status
     clear
+    white "VPS infomation:"
+    white "OS: $(blue "$op")" && white "kernel version: $(blue "$version")" && white "CPU architecture: $(blue "$cpu")" && white "virtual type: $(blue "$vi")"
+    white "$status"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  
     green "  1. install tuic" 
     green "  2. display tuic config and V2rayN config"
     green "  3. view tuic log"
     green "  4. ACME"
+    green "  5. Enable publickey authorize"
     green "  9. uninstall tuic"
     green "  0. exit script"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  
-    white "VPS infomation:"
-    white "OS: $(blue "$op")" && white "kernel version: $(blue "$version")" && white "CPU architecture: $(blue "$cpu")" && white "virtual type: $(blue "$vi")"
-    white "$status"
     echo
     readp "Input number:" Input
     case "$Input" in     
@@ -686,6 +687,7 @@ start_menu( ) {
         2 ) tuic_share;;
         3 ) tuic_log;;
         4 ) acme;;
+        5 ) enable_publickey_authorize;;
         9 ) tuic_uninstall;;
         * ) exit 
     esac
