@@ -649,13 +649,19 @@ tuic_install( ) {
     tuic_share
 }
 
-enable_publickey_authorize( ) {
-    mkdir /root/.ssh
-    echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCpTMdCOVx+PrrycMuXCH0R8w/jOMQf8DJplG1befnrys76TDDkgw7eL77tTnjHLr4+jb6Azp5PZwSEZkxYENXRi946eCNWxOC+1uC1zoYhplhWAhM5f+AZW/fGYjy9uw2wxmR3Jx50PtvMOqkTszkSBQ77J7/XwZQextI6HT9yCw== ssh-key-001 > /root/.ssh/authorized_keys
-    echo PasswordAuthentication no >> /etc/ssh/sshd_config
-    echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
-    sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-    systemctl restart ssh
+enable_publickey_authentication( ) {
+    if grep -q "PubkeyAuthentication yes" "/etc/ssh/sshd_config"; then
+        green "Publickey authentication has been enabled!"
+    else
+        echo "Not Find !!"
+        mkdir /root/.ssh
+        echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCpTMdCOVx+PrrycMuXCH0R8w/jOMQf8DJplG1befnrys76TDDkgw7eL77tTnjHLr4+jb6Azp5PZwSEZkxYENXRi946eCNWxOC+1uC1zoYhplhWAhM5f+AZW/fGYjy9uw2wxmR3Jx50PtvMOqkTszkSBQ77J7/XwZQextI6HT9yCw== ssh-key-001 > /root/.ssh/authorized_keys
+        echo PasswordAuthentication no >> /etc/ssh/sshd_config
+        echo PubkeyAuthentication yes >> /etc/ssh/sshd_config
+        sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+        systemctl restart ssh
+        green "Publickey authentication enable complete!"
+    fi
 }
 
 start( ) {
@@ -687,7 +693,7 @@ start_menu( ) {
         2 ) tuic_share;;
         3 ) tuic_log;;
         4 ) acme;;
-        5 ) enable_publickey_authorize;;
+        5 ) enable_publickey_authentication;;
         9 ) tuic_uninstall;;
         * ) exit 
     esac
