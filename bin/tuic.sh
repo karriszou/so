@@ -682,13 +682,13 @@ start_menu( ) {
     green "  2. display tuic config and V2rayN config"
     green "  3. view tuic log"
     green "  4. ACME"
-    green "  5. Enable publickey authorize"
+    green "  5. enable publickey authentication"
     green "  9. uninstall tuic"
     green "  0. exit script"
     red "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"  
-    echo
+    # echo
     readp "Input number:" Input
-    case "$Input" in     
+    case "$Input" in
         1 ) tuic_install;;
         2 ) tuic_share;;
         3 ) tuic_log;;
