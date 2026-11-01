@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 filepath="https://github.com/karriszou/so/raw/master/bin/tuic-server-1.0.0-musl"
 
