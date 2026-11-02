@@ -584,7 +584,7 @@ cat <<EOF > /root/tuic/tuic.json
     "private_key": "$key",
     "congestion_control": "bbr",
     "alpn": ["h3", "spdy/3.1"],
-    "log_level": "warn"
+    "log_level": "info"
 }
 EOF
 
